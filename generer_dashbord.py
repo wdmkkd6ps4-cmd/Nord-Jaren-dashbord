@@ -452,7 +452,7 @@ def generate_html(ko_data, reiser_data, ko_aggregated, nokkel_data, first_ko_dat
             <div class="page" id="page-kart">
                 <h2>Kart - Nord-Jæren</h2>
                 <p style="margin: 20px 0;">Interaktivt kart som viser trafikkmønstre på Nord-Jæren.</p>
-                <a href="https://qgiscloud.com/jaleas/Nord-J_ren_bussvegen_cloud/" target="_blank"><img src="https://raw.githubusercontent.com/wdmkkd6ps4-cmd/Tromso-dashbord/main/Data/kart_thumbnail.jpg" class="kart-thumbnail" alt="Kart over Nord-Jæren"></a>
+                <a href="https://qgiscloud.com/jaleas/Nord-J_ren_bussvegen_cloud/" target="_blank"><img src="https://raw.githubusercontent.com/wdmkkd6ps4-cmd/Nord-Jaren-dashbord/main/Data/kart_thumbnail.jpg" class="kart-thumbnail" alt="Kart over Nord-Jæren"></a>
                 <br><a href="https://qgiscloud.com/jaleas/Nord-J_ren_bussvegen_cloud/" target="_blank" class="kart-button">🗺️ Åpne interaktivt kart</a>
             </div>
             <div class="page" id="page-hjelp">
