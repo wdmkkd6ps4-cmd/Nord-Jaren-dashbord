@@ -422,7 +422,7 @@ def generate_html(ko_data, reiser_data, ko_aggregated, nokkel_data, first_ko_dat
                 <p style="margin: 20px 0;">Dette dashbordet gir en oversikt over sentrale mobilitetsindikatorer for Kommunene på Nord-Jæren.</p>
                 <div class="home-grid">
                     <div class="home-card" onclick="navigateTo('forsinkelser')"><h3>📊 Forsinkelser og køer</h3><p>Oversikt over kø og forsinkelser på utvalgte strekninger.</p></div>
-                    <div class="home-card" onclick="navigateTo('kart')"><h3>🗺️ Kart</h3><p>Interaktivt kart for Kroken og Kvaløysletta.</p></div>
+                    <div class="home-card" onclick="navigateTo('kart')"><h3>🗺️ Kart</h3><p>Interaktivt kart for Nord-Jæren.</p></div>
                     <div class="home-card" onclick="navigateTo('reisestatistikk')"><h3>🚌 Reisestatistikk</h3><p>Statistikk over reiser og reisemønstre.</p></div>
                     <div class="home-card" onclick="navigateTo('nokkeltall')"><h3>📈 Reisestrømmer</h3><p>Detaljert reisestatistikk mellom områder.</p></div>
                 </div>
@@ -450,10 +450,10 @@ def generate_html(ko_data, reiser_data, ko_aggregated, nokkel_data, first_ko_dat
                 </div>
             </div>
             <div class="page" id="page-kart">
-                <h2>Kart - Tromsø sentrum</h2>
-                <p style="margin: 20px 0;">Interaktivt kart som viser trafikkmønstre i Tromsø sentrum.</p>
-                <a href="https://qgiscloud.com/jaleas/Troms__Case/" target="_blank"><img src="https://raw.githubusercontent.com/wdmkkd6ps4-cmd/Tromso-dashbord/main/Data/kart_thumbnail.jpg" class="kart-thumbnail" alt="Kart over Tromsø"></a>
-                <br><a href="https://qgiscloud.com/jaleas/Troms__Case/" target="_blank" class="kart-button">🗺️ Åpne interaktivt kart</a>
+                <h2>Kart - Nord-Jæren</h2>
+                <p style="margin: 20px 0;">Interaktivt kart som viser trafikkmønstre på Nord-Jæren.</p>
+                <a href="https://qgiscloud.com/jaleas/Nord-J_ren_bussvegen_cloud/" target="_blank"><img src="https://raw.githubusercontent.com/wdmkkd6ps4-cmd/Tromso-dashbord/main/Data/kart_thumbnail.jpg" class="kart-thumbnail" alt="Kart over Nord-Jæren"></a>
+                <br><a href="https://qgiscloud.com/jaleas/Nord-J_ren_bussvegen_cloud/" target="_blank" class="kart-button">🗺️ Åpne interaktivt kart</a>
             </div>
             <div class="page" id="page-hjelp">
                 <div class="help-content">
