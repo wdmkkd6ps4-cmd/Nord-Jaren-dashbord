@@ -747,6 +747,41 @@ def generate_html(ko_data, reiser_data, ko_aggregated, nokkel_data, first_ko_dat
         function openSankeyModal() {{ document.getElementById('sankey-modal').style.display = 'block'; updateSankeyChart(); }}
         function closeSankeyModal() {{ document.getElementById('sankey-modal').style.display = 'none'; }}
         window.onclick = function(event) {{ if (event.target === document.getElementById('sankey-modal')) closeSankeyModal(); }}
+        
+        function updateSankeyChart() {{
+            const omradeFraSelect = document.getElementById('omrade-fra');
+            const omradeTilSelect = document.getElementById('omrade-til');
+            const retning = document.querySelector('input[name="sankey-retning"]:checked').value;
+            let omraderFra = Array.from(omradeFraSelect.selectedOptions).map(o => o.value);
+            let omraderTil = Array.from(omradeTilSelect.selectedOptions).map(o => o.value);
+            const sisteKvartaler = nokkelData.kvartaler.slice(-4);
+            let filtered = nokkelData.records.filter(r => sisteKvartaler.includes(r.kvartal));
+            const strommer = {{}};
+            if (retning === 'fra') {{
+                filtered.filter(r => omraderFra.includes(r.delomrade_fra)).forEach(r => {{
+                    const key = r.delomrade_fra + '|' + r.delomrade_til;
+                    if (!strommer[key]) strommer[key] = {{ fra: r.delomrade_fra, til: r.delomrade_til, reiser: 0 }};
+                    strommer[key].reiser += r.reiser || 0;
+                }});
+            }} else {{
+                filtered.filter(r => omraderTil.includes(r.delomrade_til)).forEach(r => {{
+                    const key = r.delomrade_fra + '|' + r.delomrade_til;
+                    if (!strommer[key]) strommer[key] = {{ fra: r.delomrade_fra, til: r.delomrade_til, reiser: 0 }};
+                    strommer[key].reiser += r.reiser || 0;
+                }});
+            }}
+            const topp10 = Object.values(strommer).sort((a, b) => b.reiser - a.reiser).slice(0, 10);
+            if (topp10.length === 0) {{ Plotly.newPlot('sankey-chart', [], {{ title: 'Ingen data' }}); return; }}
+            const fraLabels = [...new Set(topp10.map(d => d.fra))];
+            const tilLabels = [...new Set(topp10.map(d => d.til))];
+            const alleLabels = [...fraLabels, ...tilLabels];
+            const colors = [...fraLabels.map(() => '#00CC96'), ...tilLabels.map(() => '#636EFA')];
+            const sources = topp10.map(d => fraLabels.indexOf(d.fra));
+            const targets = topp10.map(d => fraLabels.length + tilLabels.indexOf(d.til));
+            const values = topp10.map(d => Math.round(d.reiser));
+            const trace = {{ type: 'sankey', orientation: 'h', node: {{ pad: 20, thickness: 30, label: alleLabels, color: colors }}, link: {{ source: sources, target: targets, value: values }} }};
+            Plotly.newPlot('sankey-chart', [trace], {{ title: retning === 'fra' ? 'Reiser FRA valgte områder' : 'Reiser TIL valgte områder' }}, {{responsive: true}});
+        }}
 
         function updateSankeyChart() {{
             const omradeFraSelect = document.getElementById('omrade-fra');
